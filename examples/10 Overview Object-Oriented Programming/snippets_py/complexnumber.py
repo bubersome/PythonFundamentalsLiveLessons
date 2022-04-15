@@ -1,21 +1,32 @@
-# fig03_01.py
-"""Class average program with sequence-controlled repetition."""
+# complexnumber.py
+"""Complex class with overloaded operators."""
 
-# initialization phase
-total = 0  # sum of grades
-grade_counter = 0
-grades = [98, 76, 71, 87, 83, 90, 57, 79, 82, 94]  # list of 10 grades
-print(len(grades), not grades)
+class Complex:
+    """Complex class that represents a complex number 
+    with real and imaginary parts."""
 
+    def __init__(self, real, imaginary):
+        """Initialize Complex class's attributes."""
+        self.real = real
+        self.imaginary = imaginary
 
-# processing phase
-for grade in grades:  
-    total += grade  # add current grade to the running total
-    grade_counter += 1  # indicate that one more grade was processed
+    def __add__(self, right):
+        """Overrides the + operator."""
+        return Complex(self.real + right.real, 
+                       self.imaginary + right.imaginary)
 
-# termination phase
-average = total / grade_counter
-print(f'Class average is {average}')
+    def __iadd__(self, right):
+        """Overrides the += operator."""
+        self.real += right.real
+        self.imaginary += right.imaginary
+        return self
+
+    def __repr__(self):
+        """Return string representation for repr()."""
+        return (f'({self.real}' + 
+                (' + ' if self.imaginary >= 0 else ' - ') +
+                f'{abs(self.imaginary)}i)')
+
 
 ##########################################################################
 # (C) Copyright 2019 by Deitel & Associates, Inc. and                    #

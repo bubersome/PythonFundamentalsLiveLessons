@@ -10,6 +10,11 @@ frequency4 = 0
 frequency5 = 0
 frequency6 = 0
 
+for roll2 in range(10_000):
+    face2 = random.randrange(1,7)
+    face3 = random.seed(2)
+    # print(face3)
+
 # 6,000,000 die rolls
 for roll in range(6_000_000):  # note underscore separators
     face = random.randrange(1, 7)

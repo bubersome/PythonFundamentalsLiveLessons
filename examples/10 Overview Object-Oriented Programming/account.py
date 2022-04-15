@@ -1,21 +1,30 @@
-# fig03_01.py
-"""Class average program with sequence-controlled repetition."""
+# account.py
+"""Account class definition."""
+from decimal import Decimal
 
-# initialization phase
-total = 0  # sum of grades
-grade_counter = 0
-grades = [98, 76, 71, 87, 83, 90, 57, 79, 82, 94]  # list of 10 grades
-print(len(grades), not grades)
+class Account:
+    """Account class for maintaining a bank account balance."""
+    
+    def __init__(self, name, balance):
+        """Initialize an Account object."""
+
+        # if balance is less than 0.00, raise an exception
+        if balance < Decimal('0.00'):
+            raise ValueError('Initial balance must be >= to 0.00.')
+
+        self.name = name
+        self.balance = balance
+
+    def deposit(self, amount):
+        """Deposit money to the account."""
+
+        # if amount is less than 0.00, raise an exception
+        if amount < Decimal('0.00'):
+            raise ValueError('amount must be positive.')
+
+        self.balance += amount
 
 
-# processing phase
-for grade in grades:  
-    total += grade  # add current grade to the running total
-    grade_counter += 1  # indicate that one more grade was processed
-
-# termination phase
-average = total / grade_counter
-print(f'Class average is {average}')
 
 ##########################################################################
 # (C) Copyright 2019 by Deitel & Associates, Inc. and                    #
